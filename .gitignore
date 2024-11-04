@@ -1,0 +1,49 @@
+# Node.js specific
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Environment variables
+.env
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# IDE/Editor settings
+.vscode/
+.idea/
+
+# Dependency directories
+/.pnp
+.pnp.js
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Test and coverage
+coverage/
+.nyc_output/
+jest-cache/
+jest-test-results.json
+
+# Optional npm cache
+.npm/
+
+# Sentry CLI
+.sentryclirc
+
+# Temporary files
+*.tmp
+*.swp
