@@ -1,0 +1,22 @@
+{
+  "name": "buildonlinechallenge-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChiaraDim/BuildOnlineChallenge-backend.git"
+  },
+  "author": "Chiara Di Marco Luketich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChiaraDim/BuildOnlineChallenge-backend/issues"
+  },
+  "homepage": "https://github.com/ChiaraDim/BuildOnlineChallenge-backend#readme",
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2"
+  }
+}
