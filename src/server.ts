@@ -1,6 +1,6 @@
-const app = require('./app');
-const dotenv = require('dotenv');
-const sequelize = require('./config/database');
+import app from './app';
+import dotenv from 'dotenv';
+import sequelize from './config/database';
 
 dotenv.config();
 
@@ -12,6 +12,6 @@ sequelize.sync({ force: false })
             console.log(`Server is running on http://localhost:${PORT}`);
         });
     })
-    .catch(err => {
+    .catch((err) => {
         console.error('Database connection failed:', err);
     });
