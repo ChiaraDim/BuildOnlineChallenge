@@ -19,6 +19,8 @@ build/
 # IDE/Editor settings
 .vscode/
 .idea/
+*.sublime-workspace
+*.sublime-project
 
 # Dependency directories
 /.pnp
@@ -31,6 +33,7 @@ docker-compose.override.yml
 # OS generated files
 .DS_Store
 Thumbs.db
+._*
 
 # Test and coverage
 coverage/
@@ -47,3 +50,6 @@ jest-test-results.json
 # Temporary files
 *.tmp
 *.swp
+
+# Git-specific
+*.orig
