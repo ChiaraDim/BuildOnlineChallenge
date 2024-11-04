@@ -1,7 +1,8 @@
 const app = require('./app');
+const dotenv = require('dotenv');
 const sequelize = require('./config/database');
-const User = require('./models/user');
-const Contact = require('./models/contact');
+
+dotenv.config();
 
 sequelize.sync({ force: false })
     .then(() => {
