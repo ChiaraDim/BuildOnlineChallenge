@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/ChiaraDim/BuildOnlineChallenge-backend#readme",
   "dependencies": {
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.3",
+    "sequelize": "^6.37.5",
+    "sequelize-cli": "^6.6.2"
   }
 }
