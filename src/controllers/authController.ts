@@ -23,3 +23,12 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ message: 'Internal server error', error });
   }
 };
+
+export const getUser = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const user = await UserRepository.findByEmail((req as any).user.email);
+        res.status(200).json({ user });
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error', error });
+    }
+    }
