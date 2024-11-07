@@ -1,62 +1,54 @@
-import { DataTypes, Model, Optional } from 'sequelize';
-import sequelize from '../config/database';
+// src/models/ContactModel.ts
+import { Model, DataTypes } from 'sequelize';
+import db from '../config/database';
 
-interface ContactAttributes {
-    id?: number;
-    name: string;
-    address: string;
-    email: string;
-    cellphone: string;
-    profilePicture?: string;
-    userId: number;
-}
-
-interface ContactCreationAttributes extends Optional<ContactAttributes, 'id' | 'profilePicture'> {}
-
-class Contact extends Model<ContactAttributes, ContactCreationAttributes> implements ContactAttributes {
-    public id!: number;
-    public name!: string;
-    public address!: string;
-    public email!: string;
-    public cellphone!: string;
-    public profilePicture?: string;
-    public userId!: number;
+class Contact extends Model {
+  public id!: number;
+  public userId!: number;
+  public name!: string;
+  public address!: string;
+  public email!: string;
+  public phoneNumber!: string;
+  public profileImage?: string;
 }
 
 Contact.init(
-    {
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        address: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isEmail: true,
-            },
-        },
-        cellphone: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        profilePicture: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        userId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
     },
-    {
-        sequelize,
-        modelName: 'Contact',
-    }
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    phoneNumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    profileImage: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+  },
+  {
+    sequelize: db,
+    modelName: 'Contacts',
+    tableName: 'contacts'
+  }
 );
 
 export default Contact;

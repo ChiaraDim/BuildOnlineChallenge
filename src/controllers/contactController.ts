@@ -1,22 +1,22 @@
 import { Request, Response } from 'express';
 import Contact from '../models/contact';
 
-export const addContact = async (req: Request, res: Response): Promise<Response> => {
+export const createContact  = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { name, address, email, cellphone, profilePicture } = req.body;
+        const { name, address, email, phoneNumber, profileImage } = req.body;
         const userId = (req as any).user.id;
 
         const newContact = await Contact.create({
             name,
             address,
             email,
-            cellphone,
-            profilePicture,
+            phoneNumber,
+            profileImage,
             userId,
         });
 
-        return res.status(201).json(newContact);
+        res.status(201).json({ message: "Contact created successfully ", newContact });
     } catch (error) {
-        return res.status(500).json({ message: 'Failed to create contact', error });
+        res.status(500).json({ message: 'Failed to create contact', error });
     }
 };

@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import authMiddleware from '../middleware/authMiddleware';
+import * as contactController from '../controllers/contactController';
+
 const router = express.Router();
-const contactController = require('../controllers/contactController');
-const authMiddleware = require('../middlewares/authMiddleware');
 
-router.post('/contacts', authMiddleware, contactController.postContact);
+router.post('/contacts', authMiddleware, contactController.createContact);
 
-module.exports = router;
+export default router;
