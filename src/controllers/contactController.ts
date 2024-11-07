@@ -31,3 +31,18 @@ export const getContacts = async (req: Request, res: Response): Promise<void> =>
         res.status(500).json({ message: 'Failed to get contacts', error });
     }
 };
+
+export const getContactById = async (req: Request, res: Response): Promise<void> => {
+    try{
+        const id = Number(req.params.id);
+        const contact = await ContactRepository.getContactById(id);
+        if(!contact){
+            res.status(404).json({ message: 'Contact not found' });
+            return;
+        }
+        res.json({contact: contact});
+    }
+    catch(error){
+        res.status(500).json({ message: 'Failed to get contact', error });
+    }
+};
