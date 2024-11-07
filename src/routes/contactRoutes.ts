@@ -5,5 +5,6 @@ import * as contactController from '../controllers/contactController';
 const router = express.Router();
 
 router.post('/contacts', authMiddleware, contactController.createContact);
+router.get('/contacts', authMiddleware, contactController.getContacts);
 
 export default router;

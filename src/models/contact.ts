@@ -1,8 +1,21 @@
-// src/models/ContactModel.ts
-import { Model, DataTypes } from 'sequelize';
+import { Model, DataTypes, Optional } from 'sequelize';
 import db from '../config/database';
 
-class Contact extends Model {
+interface ContactAttributes {
+    id: number;
+    userId: number;
+    name: string;
+    address: string;
+    email: string;
+    phoneNumber: string;
+    profileImage?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+  }
+
+interface ContactCreationAttributes extends Optional<ContactAttributes, 'id' | 'createdAt' | 'updatedAt'> {}
+
+class Contact extends Model<ContactAttributes, ContactCreationAttributes> implements ContactAttributes {
   public id!: number;
   public userId!: number;
   public name!: string;
@@ -52,3 +65,4 @@ Contact.init(
 );
 
 export default Contact;
+export { ContactCreationAttributes };

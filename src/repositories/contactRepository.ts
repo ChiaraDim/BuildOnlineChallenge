@@ -1,4 +1,5 @@
 import Contact from '../models/contact';
+import { ContactCreationAttributes } from '../models/contact';
 
 class ContactRepository {
   async getContactsByUserId(userId: number): Promise<Contact[]> {
@@ -9,8 +10,8 @@ class ContactRepository {
     return await Contact.findByPk(id);
   }
 
-  async createContact(contactData: Omit<Contact, 'id'>): Promise<void> {
-    await Contact.create(contactData);
+  async createContact(contactData: ContactCreationAttributes): Promise<Contact> {
+    return await Contact.create(contactData);
   }
 
   async updateContact(id: number, updatedData: Partial<Contact>): Promise<void> {
