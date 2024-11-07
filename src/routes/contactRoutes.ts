@@ -7,5 +7,6 @@ const router = express.Router();
 router.post('/contacts', authMiddleware, contactController.createContact);
 router.get('/contacts', authMiddleware, contactController.getContacts);
 router.get('/contacts/:id', authMiddleware, contactController.getContactById);
+router.put('/contacts/:id', authMiddleware, contactController.updateContact);
 
 export default router;
