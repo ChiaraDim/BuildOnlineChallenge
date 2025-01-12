@@ -4,10 +4,10 @@ import ContactRepository from '../repositories/contactRepository';
 export const createContact  = async (req: Request, res: Response): Promise<void> => {
     try {
         const { name, address, email, phoneNumber, profileImage } = req.body;
-        const userId = (req as any).user.id;
+        const userEmail = (req as any).user.email;
 
         const newContact = await ContactRepository.createContact({
-            userId,
+            userEmail,
             name,
             address,
             email,
@@ -23,14 +23,26 @@ export const createContact  = async (req: Request, res: Response): Promise<void>
 
 export const getContacts = async (req: Request, res: Response): Promise<void> => {
     try{
-        const userId = (req as any).user.id;
-        const contacts = await ContactRepository.getContactsByUserId(userId);
+        const userEmail = (req as any).user.email;
+        const contacts = await ContactRepository.getContactsByUserEmail(userEmail);
         res.status(200).json({contacts: contacts});
     }
     catch(error){
+        console.log(error);
         res.status(500).json({ message: 'Failed to get contacts', error });
     }
 };
+
+export const getContact = async (req: Request, res: Response): Promise<void> => {
+    try{
+        const email = req.params.email;
+        const contact = await ContactRepository.getContactByEmail(email);
+        res.status(200).json({contact: contact});
+    }
+    catch(error){
+        res.status(500).json({ message: 'Failed to get contact', error });
+    }
+}
 
 export const updateContact = async (req: Request, res: Response): Promise<void> => {
     try{

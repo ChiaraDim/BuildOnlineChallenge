@@ -25,7 +25,6 @@ const authMiddleware = (req: AuthenticatedRequest, res: Response, next: NextFunc
       res.status(403).send({ message: 'Forbidden' });
       return;
     }
-
     req.user = decoded;
     next();
   });

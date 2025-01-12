@@ -3,7 +3,7 @@ import db from '../config/database';
 
 interface ContactAttributes {
     id: number;
-    userId: number;
+    userEmail: string;
     name: string;
     address: string;
     email: string;
@@ -17,7 +17,7 @@ interface ContactCreationAttributes extends Optional<ContactAttributes, 'id' | '
 
 class Contact extends Model<ContactAttributes, ContactCreationAttributes> implements ContactAttributes {
   public id!: number;
-  public userId!: number;
+  public userEmail!: string;
   public name!: string;
   public address!: string;
   public email!: string;
@@ -32,8 +32,8 @@ Contact.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    userId: {
-      type: DataTypes.INTEGER,
+    userEmail: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     name: {
@@ -46,6 +46,7 @@ Contact.init(
     },
     email: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
     },
     phoneNumber: {
@@ -53,7 +54,7 @@ Contact.init(
       allowNull: false,
     },
     profileImage: {
-      type: DataTypes.TEXT,
+      type: DataTypes.TEXT('long'),
       allowNull: true,
     },
   },
