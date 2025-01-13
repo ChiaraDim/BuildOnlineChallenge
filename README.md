@@ -40,14 +40,22 @@ Follow these steps to set up the backend locally:
 ## Environment Variables
 Create a .env file in the root of your project and configure it with the following variables:
     ```bash
-    DB_NAME=contact_management
-    DB_USER=your_db_user
-    DB_PASSWORD=your_db_password
-    DB_HOST=localhost
-    DB_PORT=3306
-    JWT_SECRET=your_jwt_secret_key
-    PORT=5000
-    ```
+      
+      PORT=5000
+      
+      JWT_SECRET=your_jwt_secret_key
+      
+      DB_HOST=127.0.0.1
+      #DB_HOST=mysql-db
+      DB_USER=root
+      DB_PASSWORD=root
+      DB_NAME=contact_management
+      DB_PORT=3306
+      
+      MYSQL_ROOT_PASSWORD=root
+      MYSQL_USER=root
+      MYSQL_PASSWORD=root
+      MYSQL_DATABASE=contact_management
 
 ## Running the Application
 To run the application, follow these steps:
