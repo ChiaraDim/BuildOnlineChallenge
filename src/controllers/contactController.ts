@@ -3,10 +3,9 @@ import { createContact as createContactAction, getContacts as getContactsAction,
 
 export const createContact  = async (req: Request, res: Response): Promise<void> => {
     try {
-
         const { name, address, email, phoneNumber, profileImage } = req.body;
         const userEmail = (req as any).user.email;
-
+        
         const newContact = await createContactAction(userEmail, name, address, email, phoneNumber, profileImage);
 
         res.status(201).json({ message: "Contact created successfully ", newContact });

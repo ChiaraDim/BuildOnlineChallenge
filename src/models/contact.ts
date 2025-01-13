@@ -70,7 +70,6 @@ export default Contact;
 export { ContactCreationAttributes };
 
 export const createContactSchema = z.object({
-  userEmail: z.string().min(1, { message: 'User email is required' }),
   name: z.string().min(1, { message: 'Name is required' }),
   address: z.string().min(1, { message: 'Address is required' }),
   email: z.string().min(1, { message: 'Email is required' }),
