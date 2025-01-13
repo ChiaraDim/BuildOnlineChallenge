@@ -82,7 +82,8 @@ To run the application, follow these steps:
     ```
 
 **Contact Management**:
-- GET /api/contacts: Retrieves a paginated list of contacts for the logged-in user.
+- GET /api/contacts: Retrieves a list of contacts for the logged-in user.
+- GET /api/contacts/:email : etrieves a contact with the specified email.
 - POST /api/contacts: Creates a new contact.
     - Request body:
     ```bash
@@ -92,3 +93,10 @@ To run the application, follow these steps:
     "address": "123 Main Street"
     ```
 - PUT /api/contacts/: Updates an existing contact.
+     - Request body: Optional fields 
+    ```bash
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "123-456-7890",
+    "address": "123 Main Street"
+    ```
