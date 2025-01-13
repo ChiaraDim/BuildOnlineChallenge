@@ -34,7 +34,6 @@ export const getContacts = async (userEmail: string) => {
         return contacts;
     }
     catch(error){
-        console.log(error);
         throw new Error('Failed to get contacts');
     }
 }

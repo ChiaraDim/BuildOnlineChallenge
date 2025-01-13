@@ -22,7 +22,6 @@ export const getContacts = async (req: Request, res: Response): Promise<void> =>
 
         res.status(200).json({contacts: contacts});
     } catch(error){
-        console.log(error);
         res.status(500).json({ message: 'Failed to get contacts', error });
     }
 };
