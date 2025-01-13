@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/database';
+import { z } from 'zod';
 
 export class User extends Model {
   public id!: number;
@@ -32,3 +33,8 @@ User.init(
 );
 
 export default User;
+
+export const createUserSchema = z.object({
+  email: z.string().min(1, { message: 'Email is required' }),
+  password: z.string().min(1, { message: 'Password is required' }),
+});

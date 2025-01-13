@@ -1,5 +1,6 @@
 import { Model, DataTypes, Optional } from 'sequelize';
 import db from '../config/database';
+import { z } from 'zod';
 
 interface ContactAttributes {
     id: number;
@@ -67,3 +68,14 @@ Contact.init(
 
 export default Contact;
 export { ContactCreationAttributes };
+
+export const createContactSchema = z.object({
+  userEmail: z.string().min(1, { message: 'User email is required' }),
+  name: z.string().min(1, { message: 'Name is required' }),
+  address: z.string().min(1, { message: 'Address is required' }),
+  email: z.string().min(1, { message: 'Email is required' }),
+  phoneNumber: z.string().min(1, { message: 'Phone number is required' }),
+  profileImage: z.string().optional(),
+});
+
+export const updateContactSchema = createContactSchema.partial();
